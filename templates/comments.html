@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% load project_tags %}
+{% load static %}
+{% block content %}
+
+    <div class="wrapper">
+            <div class="slider">
+                    <div class="slide ">
+                        <div class="content">
+                            <h1>Data</h1>
+                            <p>Data is a precious thing and will last longer than the systems themselves.”
+                                  Analytics is about taking your data and outside influences (i.e. time of year) and building insights from all of it</p>
+                        </div>
+                    </div>
+                    <div class="slide current">
+                        <div class="content">
+                            <h1>Time and Money</h1>
+                            <p>Time and money are your scarcest resources. You want to make sure you’re allocating them in highest-impact areas. 
+                                Data reveals impact, and with data, you can bring more science to your decisions.”</p>
+                        </div>
+                    </div>
+                </div>
+            <div class="form-container sign-up-container">
+                    <form action="#">
+                    <div class="chat">
+                        <div class="msg-page">
+                            {% for x in result.id %}
+                                <div class="received-chat">
+                                    <div class="received-chat-image">
+                                        <img src="{% static 'img/user.png' %}" alt="">
+                                    </div>
+                                    <div class="received-msg">
+                                        <div class="received-msg-inbox">
+                                            <p>{{result|dict_value_or_null:'tweets'|array_value_or_null:x}}</p>
+                                            <span class="time">{{result|dict_value_or_null:'date'|array_value_or_null:x }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+                    </div>
+                    <input type="text" class="input" placeholder="Post comment">
+                    </form>
+            </div>
+        </div>
+
+
+
+{% endblock content %}

@@ -1,0 +1,52 @@
+      {% extends 'base.html' %}
+
+                
+           {% block content %}
+                 <div class="wrapper">
+                    <div class="slider">
+                        <div class="slide ">
+                            <div class="content">
+                                <h1>Data</h1>
+                                <p>Data is a precious thing and will last longer than the systems themselves.”
+                                      Analytics is about taking your data and outside influences (i.e. time of year) and building insights from all of it</p>
+                            </div>
+                        </div>
+                        <div class="slide current">
+                            <div class="content">
+                                <h1>Time and Money</h1>
+                                <p>Time and money are your scarcest resources. You want to make sure you’re allocating them in highest-impact areas. 
+                                    Data reveals impact, and with data, you can bring more science to your decisions.”</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="form-container sign-up-container">
+                     
+                            <form action="{% url 'analyse' %}" method = "post" enctype="multipart/form-data">
+                                {% for message in messages %}
+                                    <div>
+                                        <h4 style="color:orangered; font-size:18px;">{{message}}!!!</h4>
+                                    </div>
+                                 {% endfor %}
+                                {% csrf_token%}
+                                <style>
+                                
+                                </style>
+                                <h1>Upload Data</h1>
+                                <div class="social-container">
+                                    <a href="#" class="social"></a>
+                                    <a href="#" class="social"></a>
+                                    <a href="#" class="social"></a>
+                                </div>
+                                <div class="input">
+                                    <input name="data" type="file" class="custom-upload" hidden="hidden">
+                                    <button type="button" id="custom-button">CHOOSE A FILE</button>
+                                    <span id="custom-text">No file chosen, yet.</span>
+                                </div>
+                                <!--<input>
+                                <input>-->
+                                <button class="custom-file-input">Analyse</button>
+                            </form>
+                    </div>
+                </div>
+            {% endblock content %}
+     
